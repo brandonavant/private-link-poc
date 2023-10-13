@@ -32,5 +32,5 @@ resource "azurerm_postgresql_flexible_server" "pgfs" {
  */
 output "pgfs-admin-password" {
 	value     = random_password.postgres_password.result
-	sensitive = true // Use "terraform output -json | jq -r .pgfs-admin-password.value" to see the value
+	sensitive = true // Use "terraform output -json" to see the value
 }
