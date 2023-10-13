@@ -6,6 +6,24 @@ available via an Azure Container Instance (ACI), which is only accessible via th
 
 To use this, you will need to deploy and following the instructions listed below.
 
+## Prerequisites
+
+You first need to ensure that your local Terraform CLI is ready to go. To do this, run the following commands:
+
+We'll use the Azure CLI Credentials:
+
+```bash
+az login
+```
+
+Now, we need to ensure that we're pointing to the right subscription:
+
+```bash
+az account set --subscription <subscription-id>
+```
+
+Now, you're ready to proceed the Terraform CLI command below.
+
 ## Deployment
 
 To deploy the Terraform, you will first need to create an Azure Storage Account to house the Terraform state. The
@@ -19,7 +37,8 @@ configuration is as follows:
 * Container Name: `terraform-state`
 * Blob Name: `terraform.tfstate`
 
-Once the storage account is created, run the following command to initialize the Terraform state:
+Once the storage account is created, run the following command to initialize the Terraform state (from the 
+`infrastructure/terraform` directory):
 
 ```bash
 terraform init
