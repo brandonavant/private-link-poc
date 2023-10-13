@@ -22,14 +22,14 @@ Now, we need to ensure that we're pointing to the right subscription:
 az account set --subscription <subscription-id>
 ```
 
-Now, you're ready to proceed the Terraform CLI command below.
+Now, you're ready to proceed to the Terraform CLI commands below.
 
 ## Deployment
 
 To deploy the Terraform, you will first need to create an Azure Storage Account to house the Terraform state. The
 configuration is as follows:
 
-> Note: If my infrastructure is still up and running, you may running into naming conflicts for the Postgres instance,
+> Note: If my infrastructure is still up and running, you may running into naming conflicts for the Postgres instance;
 > if so, make sure to change the `pgfs-` to something unique in `postgres.tf`.
 
 * Resource Group: `rg-pgprivendpt-tfstate`
@@ -37,8 +37,8 @@ configuration is as follows:
 * Container Name: `terraform-state`
 * Blob Name: `terraform.tfstate`
 
-Once the storage account is created, run the following command to initialize the Terraform state (from the 
-`infrastructure/terraform` directory):
+Once the storage account is created, run the following command (from the 
+`infrastructure/terraform` directory) to initialize the Terraform state:
 
 ```bash
 terraform init
@@ -88,7 +88,7 @@ Once the client is installed, you can connect to the PostgreSQL Flexible Server 
 psql -h pgfs-pgprivendpt.postgres.database.azure.com -U psqladmin -d postgres
 ```
 
-When prompted, enter the password retrieved from the Terraform output. You should then be connected to the PostgreSQL!
+When prompted, enter the password retrieved from the Terraform output. You should then be connected to the PostgreSQL instance!
 To further prove that the PostgreSQL instance is only accessible via the private endpoint, try to connect to the server
 using the public endpoint outside of the VNet. To do so, run the same command as above, but from outside the jump box
 (e.g. your local machine). You should see the following error:
